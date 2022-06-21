@@ -1,0 +1,165 @@
+<style>
+  .signup-page {
+      float: left;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      padding: 20px 0px 20px;
+  }
+  .form-bg {
+      background-color: #fff;
+      border: 1px solid #e5e5e5;
+      padding: 20px 40px 30px;
+  }
+  .logo {
+      width: 200px;
+      margin: 20px auto 40px;
+      display: block;
+  }
+  span.options-divider {
+      text-align: center;
+      display: block;
+      font-size: 14px;
+      text-transform: uppercase;
+      position: relative;
+      width: 40px;
+      margin: 0 auto;
+      padding: 25px 0px;
+      background-color: #fff;
+      z-index: 3;
+      color: #999;
+  }
+  span.option-br {
+      border-bottom: 1px solid #ddd;
+      position: relative;
+      width: 100%;
+      bottom: 34px;
+      z-index: 2;
+      display: block;
+  }
+  .login-link {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      padding: 0px 15px 0px;
+  }
+  .login-link p {
+      color: #262626;
+      font-size: 14px;
+      margin: 15px;
+      text-align: center;
+  }
+  .login-link p a{
+      color: #d93026;
+  }
+  </style>
+  {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JOBS 4 YOU</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="shortcut icon" href="{% static 'assets/img/ico/favicon.ico' %}">
+ <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/img/ico/apple-touch-icon-144x144.png' %}">
+ <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/ico/apple-touch-icon-114x114.png' %}">
+ <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/ico/apple-touch-icon-72x72.png' %}">
+ <link rel="apple-touch-icon" href="{% static 'assets/img/ico/apple-touch-icon-57x57.png' %}">
+</head>
+<body>
+<div class="signup-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-lg-6 offset-sm-1 offset-lg-3">
+        <h2 class="text-center">Welcome To <span class="text-danger">JOBS 4 YOU</span></h2>
+        <div class="form-bg">
+          <header>
+            <h4 class="card-title mt-2">Sign up as User</h4>
+            <a href="{% url 'login' %}" class="float-right btn btn-outline-primary mt-1 mb-4 mx-2">Login</a>
+            <a href="{% url 'company_register' %}" class="float-right btn btn-outline-primary mt-1 mb-4">Register as Company</a>
+          </header>
+          <form class="pt-4" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+              <input type="number" name="age" class="form-control" placeholder="Age"required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="education" class="form-control" placeholder="Educational qualification"required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="experience" class="form-control" placeholder="Experience"required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Email"required>
+            </div>
+            <div class="form-group">
+              <input type="test" name="number" class="form-control" pattern="[1-9]{1}[0-9]{9}" maxlength="10" placeholder="Contact Number"required>
+            </div>
+            <div class="form-group" required>
+              <label class="pr-2">Gender :</label>
+              <label class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" value="male">
+                  <span class="form-check-label">Male</span>
+              </label>
+              <label class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" value="female">
+                  <span class="form-check-label">Female</span>
+              </label>
+              <label class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" value="other">
+                <span class="form-check-label">Other</span>
+              </label>
+          </div>
+          <div class="form-group">
+            <input type="test" name="city" class="form-control" placeholder="City" required>
+          </div>
+          <div class="input-group mb-3">
+            <input type="file" class="custom-file-input" name="photo" required>
+            <label class="custom-file-label" for="inputGroupFile01">Upload Photo</label>
+        </div>
+          <div class="input-group mb-3">
+              <input type="file" class="custom-file-input" name="resume"required>
+              <label class="custom-file-label">Upload Resume</label>
+          </div>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password"required >
+            </div>
+            <div class="form-group">
+              <input type="password" name="cpassword" class="form-control" id="confirm_password" placeholder="Confirm Password"required>
+              <span id='message'></span>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+            <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our Terms of use and Privacy Policy.</small>
+          </form>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+</script>
+{% if msg_success %}
+    <script>
+        alert('{{ msg_success }}')
+        javascript: history.go(-2);
+    </script>
+    {% endif %}
+</body>
+</html>

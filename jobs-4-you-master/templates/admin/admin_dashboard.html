@@ -1,0 +1,131 @@
+{% extends 'admin/admin_index.html'%} {% load static %} {% block content %}
+
+<section id="welcome">
+    <div class="section-inner">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb100">                        
+                    <h2 class="section-heading">Welcome <span class="theme-accent-color">To</span> JOBS 4 YOU </h2>
+                    <hr class="thin-hr">
+                    <h3 class="section-subheading secondary-font">Were very happy to see you.</h3>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="container">
+                <div class="col-md-3">
+                    <h2 class="mb50">About <span class="theme-accent-color">JOBS 4 YOU</span></h2>
+                    <p class="lead">Find the right Employer !.</p>
+                    <p>Reach employer with just the right skills and experience. Get great applicants fast. Post your free job in minutes with pre-written job templates. Make a great hire fast! Recruit Top Talent..</p>
+                    <p class="mt30"><a href="{% url 'admin_verifycompany' %}" class="btn btn-primary btn-theme page-scroll">Verify Employer</a></p>
+                </div>
+
+                <div class="col-md-8 col-md-offset-1">
+                    
+                        <div class="col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box-1 match-height mb30">
+                                <i class="fa-4x pe-7s-film"></i>
+                                <div class="content-area">
+                                    <h3 class="title">Employer Feedback</h3>                                            
+                                    <div class="content">A man is born he's a man of means. Then along come two they got nothin' but their jeans. But they got diff'rent strokes. It takes diff'rent strokes.</div>
+                                    <p class="mt30"><a href="{% url 'admin_companyfeedback' %}" class="btn btn-primary btn-theme page-scroll">New Feedback</a></p>
+                                    <p class="mt30"><a href="{% url 'employers_feedback' %}" class="btn btn-primary btn-theme page-scroll">All Employer Feedback</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box-1 match-height mb30">
+                                <i class="fa-4x pe-7s-wine"></i>
+                                <div class="content-area">
+                                    <h3 class="title">Jobseeker Feedback</h3>                                            
+                                    <div class="content">Now were up in the big leagues getting' our turn at bat. Movin' on up to the east side. We finally got a piece of the pie.</div>
+                                    <p class="mt30"><a href="{% url 'admin_userfeedback' %}" class="btn btn-primary btn-theme page-scroll">New Feedback</a></p>
+                                    <p class="mt30"><a href="{% url 'jobseeker_feedback' %}" class="btn btn-primary btn-theme page-scroll">All Jobseeker Feedback</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<section class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="assets/img/bg/bg6.jpg" data-speed="0.8">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb100">
+                    <h2 class="section-heading">People about <span class="theme-accent-color">Jobs 4 You</span></h2>
+                    <hr class="thin-hr">
+                    <h3 class="section-subheading secondary-font">Satisfaction, everytime.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="owl-carousel-paged testimonial-owl wow fadeIn list-unstyled" data-items="1" data-items-desktop="[1200,1]" data-items-desktop-small="[980,1]" data-items-tablet="[768,1]" data-items-mobile="[479,1]">
+                        {% for i in feedback%}
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-10 col-xs-offset-1 item-caption">
+                                    <div class="col-sm-2">
+                                     
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <p>{{i.user_feedback_message}}</p>
+                                        <h4>{{i.user_feedback_name}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>{% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="opaqued light-opaqued parallax" data-parallax="scroll" data-image-src="{% static 'assets/img/bg/bg_bw2.jpg' %}" data-speed="0.8">
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <div class="text-center">
+                        <span class="stat-icon"><i class="pe-7s-clock fa-4x"></i></span>
+                        <h2><span class="countup">{{employer}}</span></h2>
+                        <h6>Successful <span class="theme-accent-color">Employers</span></h6>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <div class="text-center">
+                        <span class="stat-icon"><i class="pe-7s-cloud-upload fa-4x"></i></span>
+                        <h2><span class="countup">{{resume}}</span></h2>
+                        <h6>Resumes <span class="theme-accent-color">Uploaded</span></h6>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <div class="text-center">
+                        <span class="stat-icon"><i class="pe-7s-tools fa-4x"></i></span>
+                        <h2><span class="countup">24</span></h2>
+                        <h6>Hours Of <span class="theme-accent-color">Support</span></h6>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <div class="text-center">
+                        <span class="stat-icon"><i class="pe-7s-like fa-4x"></i></span>
+                        <h2><span class="countup">{{resume}}</span></h2>
+                        <h6>Successful <span class="theme-accent-color">Jobseeker</span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

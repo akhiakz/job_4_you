@@ -1,0 +1,38 @@
+{% extends 'user_index.html'%} {% load static %} {% block content %}
+
+<section>
+    {% for var in var %}
+    <div class="section-inner">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12 blog-item mb100 wow fadeIn" data-wow-delay="0.2s">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div class="post-date heading-font">
+                                <span class="the-date">#{{forloop.counter}}</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-10">
+                            <h2 class="post-title">{{var.company_name}}</h2>
+                            
+                            <div class="hover-item mb30">                                    
+                                <img src="{{var.company_logo.url}}" class="img-responsive smoothie wow fadeIn" data-wow-delay="0.2s" alt="title">
+                                <div class="overlay-item-caption smoothie wow fadeIn" data-wow-delay="0.2s"></div>
+                                <div class="hover-item-caption smoothie">
+                                    <h3 class="vertical-center smoothie"><a href="{{var.company_website}}" target="_blank" class="smoothie btn btn-primary btn-white page-scroll" title="view article">View</a></h3>
+                                </div>
+                            </div>
+                            <p>{{var.company_description}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>{% endfor %}
+</section>
+
+{% endblock %}
